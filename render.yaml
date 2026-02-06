@@ -1,0 +1,31 @@
+services:
+  - type: web
+    runtime: image
+    name: open-webui
+    image:
+      url: ghcr.io/open-webui/open-webui:v0.6.41
+    plan: standard
+    region: oregon
+    disk:
+      name: openwebui-data
+      mountPath: /app/backend/data
+      sizeGB: 10
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: openwebui-db
+          property: connectionString
+      - key: WEBUI_SECRET_KEY
+        generateValue: true
+      - key: ENABLE_SIGNUP
+        value: "false"
+      - key: ENABLE_OLLAMA_API
+        value: "false"
+
+databases:
+  - name: openwebui-db
+    plan: basic-256mb
+    region: oregon
