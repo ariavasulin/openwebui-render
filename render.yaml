@@ -4,7 +4,7 @@ services:
     runtime: image
     image:
       url: ghcr.io/open-webui/open-webui:v0.6.41
-    plan: starter
+    plan: standard
     region: oregon
     healthCheckPath: /health
     envVars:
