@@ -3,10 +3,7 @@ services:
     name: open-webui
     runtime: docker
     dockerfilePath: ./Dockerfile
-    buildArgs:
-      USE_SLIM: "true"
-      USE_OLLAMA: "false"
-      USE_CUDA: "false"
+    dockerContext: .
     plan: standard
     region: oregon
     healthCheckPath: /health
