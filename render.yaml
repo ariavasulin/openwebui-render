@@ -17,7 +17,7 @@ services:
       - key: WEBUI_SECRET_KEY
         generateValue: true
       - key: ENABLE_SIGNUP
-        value: "false"
+        value: "true"
       - key: ENABLE_OLLAMA_API
         value: "false"
 
