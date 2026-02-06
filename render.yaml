@@ -1,9 +1,12 @@
 services:
   - type: web
     name: open-webui
-    runtime: image
-    image:
-      url: ghcr.io/open-webui/open-webui:v0.6.41
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    buildArgs:
+      USE_SLIM: "true"
+      USE_OLLAMA: "false"
+      USE_CUDA: "false"
     plan: standard
     region: oregon
     healthCheckPath: /health
