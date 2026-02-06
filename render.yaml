@@ -1,15 +1,11 @@
 services:
   - type: web
-    runtime: image
     name: open-webui
+    runtime: image
     image:
       url: ghcr.io/open-webui/open-webui:v0.6.41
-    plan: standard
+    plan: starter
     region: oregon
-    disk:
-      name: openwebui-data
-      mountPath: /app/backend/data
-      sizeGB: 10
     healthCheckPath: /health
     envVars:
       - key: PORT
@@ -27,5 +23,7 @@ services:
 
 databases:
   - name: openwebui-db
-    plan: basic-256mb
+    databaseName: openwebui
+    user: openwebui
+    plan: free
     region: oregon
